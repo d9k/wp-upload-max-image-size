@@ -5,4 +5,4 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
     die;
 }
 
-delete_option('custom_media_upload_limit');
+delete_option('custom_umis_limit_kb');
