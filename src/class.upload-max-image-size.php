@@ -138,7 +138,7 @@ class UploadMaxImageSize {
                 <p><?php _e('To bypass the size limit for specific images, rename the file to include ".big" before the extension (for example "my-map.big.jpg").', 'upload-max-image-size'); ?></p>
                 <p><?php
                     printf(
-                        __('Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB', 'upload-max-image-size'),
+                        __('Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB.', 'upload-max-image-size'),
                         self::MAX_POSSIBLE_IMAGE_UPLOAD_LIMIT_KB,
                         self::DEFAULT_IMAGE_UPLOAD_LIMIT_KB
                     ); ?></p>

@@ -46,8 +46,8 @@ msgstr "Для обхода ограничения по размеру для к
 
 #: class.upload-max-image-size.php:141
 #, php-format
-msgid "Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB"
-msgstr "Если задать неправильно (меньше 0 или больше %d KB), значение будет сброшено до %d KB"
+msgid "Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB."
+msgstr "Если задать значение неправильно (меньше 0 или больше %d KB), оно будет сброшено до %d KB."
 
 #: class.upload-max-image-size.php:149
 msgid "Max upload image size (KB):"
