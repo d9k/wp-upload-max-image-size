@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Upload Max Image Size plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Upload Max Image Size 0.3\n"
+"Project-Id-Version: Upload Max Image Size 0.4\n"
 "Report-Msgid-Bugs-To: Komarov Dmitry <d9k@ya.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,43 +20,47 @@ msgstr ""
 #. Description of the plugin
 #: upload-max-image-size.php
 msgid "Set a custom image upload limit."
-msgstr "Настройте предел размера загружаемого изображения"
+msgstr "Настройте предел размера загружаемого изображения."
 
 #. Author of the plugin
 #: upload-max-image-size.php
 msgid "Komarov Dmitrii  [d9k], Tiffany Elsten"
 msgstr ""
 
-#: class.upload-max-image-size.php:44
+#: class.upload-max-image-size.php:47
 #, php-format
-msgid "Please reduce the size of the uploaded image to less than %d KB."
-msgstr "Пожалуйста, уменьшите размер загружаемого изображения до размера, меньшего, чем %d KB."
+msgid "Please reduce the size of the uploaded image to less than %d KB. if it is absolutely necessary to upload large image, rename the file to include \".big\" right before the extension (for example \"my-map.big.jpg\")."
+msgstr "Пожалуйста, уменьшите размер загружаемого изображения до размера, меньшего, чем %d KB. Если загрузить большое изображение абсолютно необходимо, переименуйте файл, чтобы название включало \".big\" перед расширением (например, \"my-map.big.jpg\")."
 
-#: class.upload-max-image-size.php:133
+#: class.upload-max-image-size.php:136
 msgid "Change Media Upload Limit"
 msgstr "Ограничить размер загружаемого изображения"
 
-#: class.upload-max-image-size.php:134
+#: class.upload-max-image-size.php:137
 msgid "This applies to the Upload New image file size limit."
 msgstr "Применяется к новому загружаемому на сервер изображению."
 
-#: class.upload-max-image-size.php:137
+#: class.upload-max-image-size.php:138
+msgid "To bypass the size limit for specific images, rename the file to include \".big\" before the extension (for example \"my-map.big.jpg\")."
+msgstr "Для обхода ограничения по размеру для конкретных изображений, переименуйте файл, чтобы название включало \".big\" перед расширением (например, \"my-map.big.jpg\")."
+
+#: class.upload-max-image-size.php:141
 #, php-format
 msgid "Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB"
 msgstr "Если задать неправильно (меньше 0 или больше %d KB), значение будет сброшено до %d KB"
 
-#: class.upload-max-image-size.php:145
+#: class.upload-max-image-size.php:149
 msgid "Max upload image size (KB):"
 msgstr "Максимальный размер загружаемого изображения (KB):"
 
-#: class.upload-max-image-size.php:158
+#: class.upload-max-image-size.php:162
 msgid "Reset extension settings"
 msgstr "Сбросить настройки расширения"
 
-#: class.upload-max-image-size.php:160
+#: class.upload-max-image-size.php:164
 msgid "Are you sure you want to reset the extension settings to default?"
 msgstr "Вы действительно хотите сбросить настройки расширения на значения по-умолчанию?"
 
-#: class.upload-max-image-size.php:173
+#: class.upload-max-image-size.php:177
 msgid "Security check failed"
 msgstr "Ошибка проверки безопасности"

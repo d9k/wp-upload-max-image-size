@@ -15,7 +15,6 @@ class UploadMaxImageSize {
     }
 
     public static function add_hooks() {
-        // add_filter('upload_size_limit', array('UploadMaxImageSize', 'set_upload_size_limit_in_bytes'));
         add_filter('wp_handle_upload_prefilter', array('UploadMaxImageSize', 'upload_prefilter'));
         add_action('admin_init', array('UploadMaxImageSize', 'register_settings'));
         add_action('admin_menu', array('UploadMaxImageSize', 'register_options_page'));
@@ -29,7 +28,11 @@ class UploadMaxImageSize {
     }
 
     function upload_prefilter($file) {
-        error_log('__TEST__ 100: ' . var_export($file, true));
+        // Skip files with .big before extension (e.g., my-file.big.jpg)
+        $filename = $file['name'];
+        if (preg_match('/\.big\.[^.]+$/i', $filename)) {
+            return $file;
+        }
 
         // Calculate the image size in KB
         $image_size = $file['size'] / 1024;
@@ -41,7 +44,7 @@ class UploadMaxImageSize {
         $is_image = strpos($file['type'], 'image');
 
         if (($image_size > $limit_kb) && ($is_image !== false)) {
-            $file['error'] =  sprintf(__('Please reduce the size of the uploaded image to less than %d KB.', 'upload-max-image-size'), $limit_kb);
+            $file['error'] =  sprintf(__('Please reduce the size of the uploaded image to less than %d KB. if it is absolutely necessary to upload large image, rename the file to include ".big" right before the extension (for example "my-map.big.jpg").', 'upload-max-image-size'), $limit_kb);
         }
 
         return $file;
@@ -132,6 +135,7 @@ class UploadMaxImageSize {
                 <?php settings_fields('UploadMaxImageSize_options_group'); ?>
                 <h3><?php _e('Change Media Upload Limit', 'upload-max-image-size'); ?> </h3>
                 <p><?php _e('This applies to the Upload New image file size limit.', 'upload-max-image-size'); ?></p>
+                <p><?php _e('To bypass the size limit for specific images, rename the file to include ".big" before the extension (for example "my-map.big.jpg").', 'upload-max-image-size'); ?></p>
                 <p><?php
                     printf(
                         __('Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB', 'upload-max-image-size'),
