@@ -9,3 +9,10 @@ Used code from [WP-Max-Upload-Limiter](https://github.com/iPublicis/WP-Max-Uploa
 ## Installation
 
 To install copy files from `src/` directory to new `wp-content/plugins/upload-max-image-size/` directory of your WordPress site.
+
+## Translation
+
+```
+wp i18n make-pot wp-content/plugins/upload-max-image-size
+msgfmt -o upload-max-image-size-ru_RU.mo upload-max-image-size-ru_RU.po
+```

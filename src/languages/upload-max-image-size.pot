@@ -1,0 +1,55 @@
+# Copyright (C) 2026 Komarov Dmitrii  [d9k], Tiffany Elsten
+# This file is distributed under the same license as the Upload Max Image Size plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Upload Max Image Size 0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/src\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-05-10T15:15:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: upload-max-image-size\n"
+
+#. Plugin Name of the plugin
+#: upload-max-image-size.php
+msgid "Upload Max Image Size"
+msgstr ""
+
+#. Description of the plugin
+#: upload-max-image-size.php
+msgid "Set a custom image upload limit."
+msgstr ""
+
+#. Author of the plugin
+#: upload-max-image-size.php
+msgid "Komarov Dmitrii  [d9k], Tiffany Elsten"
+msgstr ""
+
+#: class.upload-max-image-size.php:135
+msgid "Change Media Upload Limit"
+msgstr ""
+
+#: class.upload-max-image-size.php:136
+msgid "This applies to the Upload New image file size limit."
+msgstr ""
+
+#: class.upload-max-image-size.php:139
+#, php-format
+msgid "Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB"
+msgstr ""
+
+#: class.upload-max-image-size.php:158
+msgid "Reset extension settings"
+msgstr ""
+
+#: class.upload-max-image-size.php:160
+msgid "Are you sure you want to reset the settings to default?"
+msgstr ""
+
+#: class.upload-max-image-size.php:173
+msgid "Security check failed"
+msgstr ""

@@ -41,7 +41,7 @@ class UploadMaxImageSize {
         $is_image = strpos($file['type'], 'image');
 
         if (($image_size > $limit_kb) && ($is_image !== false)) {
-            $file['error'] =  sprintf(__('Your picture is too large. It has to be smaller than %d KB'), $limit_kb);
+            $file['error'] =  sprintf(__('Your picture is too large. It has to be smaller than %d KB', 'upload-max-image-size'), $limit_kb);
         }
 
         return $file;
@@ -57,6 +57,10 @@ class UploadMaxImageSize {
     public static function register_settings() {
         add_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME, self::DEFAULT_IMAGE_UPLOAD_LIMIT_KB);
         register_setting('UploadMaxImageSize_options_group', self::MAX_IMAGE_SIZE_KB_OPTION_NAME, ['sanitize_callback' => ['UploadMaxImageSize', 'custom_umis_limit_kb_callback']]);
+    }
+
+    public static function umis_load_textdomain() {
+      	load_plugin_textdomain('upload-max-image-size', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
     }
 
     function register_options_page() {
@@ -126,11 +130,11 @@ class UploadMaxImageSize {
             <h1></h1>
             <form method="post" action="options.php">
                 <?php settings_fields('UploadMaxImageSize_options_group'); ?>
-                <h3><?php _e('Change Media Upload Limit'); ?> </h3>
-                <p><?php _e('This applies to the Upload New image file size limit.'); ?></p>
+                <h3><?php _e('Change Media Upload Limit', 'upload-max-image-size'); ?> </h3>
+                <p><?php _e('This applies to the Upload New image file size limit.', 'upload-max-image-size'); ?></p>
                 <p><?php
                     printf(
-                        __('Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB'),
+                        __('Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB', 'upload-max-image-size'),
                         self::MAX_POSSIBLE_IMAGE_UPLOAD_LIMIT_KB,
                         self::DEFAULT_IMAGE_UPLOAD_LIMIT_KB
                     ); ?></p>
@@ -149,9 +153,9 @@ class UploadMaxImageSize {
                     <?php submit_button(); ?>
                     <input
                         type="submit"
-                        value="<?php _e('Reset extension settings'); ?>" class="button button-danger"
+                        value="<?php _e('Reset extension settings', 'upload-max-image-size'); ?>" class="button button-danger"
                         form="form_umis_reset"
-                        onclick="return confirm('<?php _e('Are you sure you want to reset the settings to default?'); ?>');" />
+                        onclick="return confirm('<?php _e('Are you sure you want to reset the settings to default?', 'upload-max-image-size'); ?>');" />
                 </div>
             </form>
             <form id="form_umis_reset" method="POST" action="<?php echo admin_url('admin.php'); ?>" style="display: none;">
@@ -164,7 +168,7 @@ class UploadMaxImageSize {
 
     public static function umis_reset_admin_action() {
         if (!isset($_POST['umis_reset_nonce']) || !wp_verify_nonce($_POST['umis_reset_nonce'], 'umis_reset_action')) {
-            wp_die(__('Security check failed'));
+            wp_die(__('Security check failed', 'upload-max-image-size'));
         }
 
         delete_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME);
