@@ -20,6 +20,7 @@ class UploadMaxImageSize {
         add_action('admin_init', array('UploadMaxImageSize', 'register_settings'));
         add_action('admin_menu', array('UploadMaxImageSize', 'register_options_page'));
         add_action('admin_head', array('UploadMaxImageSize', 'get_html_style'));
+        add_action('admin_action_umis_reset', array('UploadMaxImageSize', 'umis_reset_admin_action'));
     }
 
     public static function calc_upload_size_limit_in_kb() {
@@ -54,7 +55,7 @@ class UploadMaxImageSize {
     }
 
     public static function register_settings() {
-        add_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME, 25);
+        add_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME, self::DEFAULT_IMAGE_UPLOAD_LIMIT_KB);
         register_setting('UploadMaxImageSize_options_group', self::MAX_IMAGE_SIZE_KB_OPTION_NAME, ['sanitize_callback' => ['UploadMaxImageSize', 'custom_umis_limit_kb_callback']]);
     }
 
@@ -83,8 +84,20 @@ class UploadMaxImageSize {
             .upload-max-image-size th {
                 vertical-align: middle;
             }
+
+            .upload-max-image-size .button-danger {
+                background: #d63638;
+                border-color: #d63638;
+                color: #fff;
+            }
+
+            .upload-max-image-size .button-danger:hover {
+                background: #b32d2f;
+                border-color: #b32d2f;
+                color: #fff;
+            }
         </style>
-    <?php
+<?php
     }
 
     function UploadMaxImageSize_option_page() {
@@ -113,7 +126,22 @@ class UploadMaxImageSize {
                 </table>
                 <?php submit_button(); ?>
             </form>
+            <form method="POST" action="<?php echo admin_url('admin.php'); ?>">
+                <input type="hidden" name="action" value="umis_reset" />
+                <?php wp_nonce_field('umis_reset_action', 'umis_reset_nonce'); ?>
+                <input type="submit" value="<?php _e('Reset extension settings'); ?>" class="button button-danger" onclick="return confirm('<?php _e('Are you sure you want to reset the settings to default?'); ?>');" />
+            </form>
         </div>
 <?php
+    }
+
+    public static function umis_reset_admin_action() {
+        if (!isset($_POST['umis_reset_nonce']) || !wp_verify_nonce($_POST['umis_reset_nonce'], 'umis_reset_action')) {
+            wp_die(__('Security check failed'));
+        }
+
+        delete_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME);
+        wp_redirect(admin_url('options-general.php?page=UploadMaxImageSize'));
+        exit();
     }
 }
