@@ -96,8 +96,27 @@ class UploadMaxImageSize {
                 border-color: #b32d2f;
                 color: #fff;
             }
+
+            .upload-max-image-size .form-buttons {
+                margin-top: 32px;
+                display: flex;
+                align-items: baseline
+            }
+
+            .upload-max-image-size .form-buttons>* {
+                display: inline-flex;
+            }
+
+            .upload-max-image-size .form-buttons>*+* {
+                margin-left: 20px;
+            }
+
+            .upload-max-image-size p.submit {
+                padding: 0;
+                margin: 0;
+            }
         </style>
-<?php
+    <?php
     }
 
     function UploadMaxImageSize_option_page() {
@@ -119,17 +138,25 @@ class UploadMaxImageSize {
                 <table>
                     <tr valign="top">
                         <th scope="row"><label for="<?php echo self::MAX_IMAGE_SIZE_KB_OPTION_NAME ?>">Max upload image size (KB):</label></th>
-                        <td><input type="number" id="<?php echo self::MAX_IMAGE_SIZE_KB_OPTION_NAME ?>"
+                        <td>
+                            <input type="number" id="<?php echo self::MAX_IMAGE_SIZE_KB_OPTION_NAME ?>"
                                 name="<?php echo self::MAX_IMAGE_SIZE_KB_OPTION_NAME ?>"
-                                value="<?php echo get_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME); ?>" /></td>
+                                value="<?php echo get_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME); ?>" />
+                        </td>
                     </tr>
                 </table>
-                <?php submit_button(); ?>
+                <div class="form-buttons">
+                    <?php submit_button(); ?>
+                    <input
+                        type="submit"
+                        value="<?php _e('Reset extension settings'); ?>" class="button button-danger"
+                        form="form_umis_reset"
+                        onclick="return confirm('<?php _e('Are you sure you want to reset the settings to default?'); ?>');" />
+                </div>
             </form>
-            <form method="POST" action="<?php echo admin_url('admin.php'); ?>">
+            <form id="form_umis_reset" method="POST" action="<?php echo admin_url('admin.php'); ?>" style="display: none;">
                 <input type="hidden" name="action" value="umis_reset" />
                 <?php wp_nonce_field('umis_reset_action', 'umis_reset_nonce'); ?>
-                <input type="submit" value="<?php _e('Reset extension settings'); ?>" class="button button-danger" onclick="return confirm('<?php _e('Are you sure you want to reset the settings to default?'); ?>');" />
             </form>
         </div>
 <?php
