@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-10T16:48:29+00:00\n"
+"POT-Creation-Date: 2026-05-10T16:56:11+00:00\n"
 "Language: ru_RU\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: upload-max-image-size\n"
@@ -29,8 +29,8 @@ msgstr ""
 
 #: class.upload-max-image-size.php:44
 #, php-format
-msgid "Your picture is too large. It has to be smaller than %d KB"
-msgstr "Ваше изображение слишком большое. Оно должно быть меньше %d КБ"
+msgid "Please reduce the size of the uploaded image to less than %d KB."
+msgstr "Пожалуйста, уменьшите размер загружаемого изображения до размера, меньшего, чем %d KB."
 
 #: class.upload-max-image-size.php:133
 msgid "Change Media Upload Limit"

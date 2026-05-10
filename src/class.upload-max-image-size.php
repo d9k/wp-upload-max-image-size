@@ -41,7 +41,7 @@ class UploadMaxImageSize {
         $is_image = strpos($file['type'], 'image');
 
         if (($image_size > $limit_kb) && ($is_image !== false)) {
-            $file['error'] =  sprintf(__('Your picture is too large. It has to be smaller than %d KB', 'upload-max-image-size'), $limit_kb);
+            $file['error'] =  sprintf(__('Please reduce the size of the uploaded image to less than %d KB.', 'upload-max-image-size'), $limit_kb);
         }
 
         return $file;
