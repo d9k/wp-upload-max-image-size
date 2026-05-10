@@ -24,10 +24,7 @@ class UploadMaxImageSize {
 
     public static function calc_upload_size_limit_in_kb() {
         $optionSizeKb = get_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME);
-        if (!$optionSizeKb || !is_numeric($optionSizeKb) || $optionSizeKb <= 0 || $optionSizeKb > self::MAX_POSSIBLE_IMAGE_UPLOAD_LIMIT_KB) {
-            $optionSizeKb = self::DEFAULT_IMAGE_UPLOAD_LIMIT_KB;
-        }
-        return $optionSizeKb;
+        return self::custom_umis_limit_kb_callback($optionSizeKb);
     }
 
     function upload_prefilter($file) {
@@ -49,9 +46,16 @@ class UploadMaxImageSize {
         return $file;
     }
 
+    public static function custom_umis_limit_kb_callback($optionSizeKb) {
+        if (!$optionSizeKb || !is_numeric($optionSizeKb) || $optionSizeKb <= 0 || $optionSizeKb > self::MAX_POSSIBLE_IMAGE_UPLOAD_LIMIT_KB) {
+            $optionSizeKb = self::DEFAULT_IMAGE_UPLOAD_LIMIT_KB;
+        }
+        return $optionSizeKb;
+    }
+
     public static function register_settings() {
         add_option(self::MAX_IMAGE_SIZE_KB_OPTION_NAME, 25);
-        register_setting('UploadMaxImageSize_options_group', self::MAX_IMAGE_SIZE_KB_OPTION_NAME, 'UploadMaxImageSize_callback');
+        register_setting('UploadMaxImageSize_options_group', self::MAX_IMAGE_SIZE_KB_OPTION_NAME, ['sanitize_callback' => ['UploadMaxImageSize', 'custom_umis_limit_kb_callback']]);
     }
 
     function register_options_page() {
