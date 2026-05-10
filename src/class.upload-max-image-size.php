@@ -141,7 +141,9 @@ class UploadMaxImageSize {
                 <!-- <p>Current limit is <?php /* echo self::get_current_limit_kb();*/ ?> kb</p> -->
                 <table>
                     <tr valign="top">
-                        <th scope="row"><label for="<?php echo self::MAX_IMAGE_SIZE_KB_OPTION_NAME ?>">Max upload image size (KB):</label></th>
+                        <th scope="row"><label for="<?php echo self::MAX_IMAGE_SIZE_KB_OPTION_NAME ?>">
+                            <?php _e('Max upload image size (KB):', 'upload-max-image-size'); ?>
+                        </label></th>
                         <td>
                             <input type="number" id="<?php echo self::MAX_IMAGE_SIZE_KB_OPTION_NAME ?>"
                                 name="<?php echo self::MAX_IMAGE_SIZE_KB_OPTION_NAME ?>"
@@ -155,7 +157,7 @@ class UploadMaxImageSize {
                         type="submit"
                         value="<?php _e('Reset extension settings', 'upload-max-image-size'); ?>" class="button button-danger"
                         form="form_umis_reset"
-                        onclick="return confirm('<?php _e('Are you sure you want to reset the settings to default?', 'upload-max-image-size'); ?>');" />
+                        onclick="return confirm('<?php _e('Are you sure you want to reset the extension settings to default?', 'upload-max-image-size'); ?>');" />
                 </div>
             </form>
             <form id="form_umis_reset" method="POST" action="<?php echo admin_url('admin.php'); ?>" style="display: none;">

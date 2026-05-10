@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-10T15:15:38+00:00\n"
+"POT-Creation-Date: 2026-05-10T16:48:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: upload-max-image-size\n"
@@ -29,17 +29,26 @@ msgstr ""
 msgid "Komarov Dmitrii  [d9k], Tiffany Elsten"
 msgstr ""
 
-#: class.upload-max-image-size.php:135
+#: class.upload-max-image-size.php:44
+#, php-format
+msgid "Your picture is too large. It has to be smaller than %d KB"
+msgstr ""
+
+#: class.upload-max-image-size.php:133
 msgid "Change Media Upload Limit"
 msgstr ""
 
-#: class.upload-max-image-size.php:136
+#: class.upload-max-image-size.php:134
 msgid "This applies to the Upload New image file size limit."
 msgstr ""
 
-#: class.upload-max-image-size.php:139
+#: class.upload-max-image-size.php:137
 #, php-format
 msgid "Setting this value to a wrong input (smaller than 0 or larger than %d KB) will default to %d KB"
+msgstr ""
+
+#: class.upload-max-image-size.php:145
+msgid "Max upload image size (KB):"
 msgstr ""
 
 #: class.upload-max-image-size.php:158
@@ -47,7 +56,7 @@ msgid "Reset extension settings"
 msgstr ""
 
 #: class.upload-max-image-size.php:160
-msgid "Are you sure you want to reset the settings to default?"
+msgid "Are you sure you want to reset the extension settings to default?"
 msgstr ""
 
 #: class.upload-max-image-size.php:173
