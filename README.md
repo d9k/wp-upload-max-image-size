@@ -1,4 +1,4 @@
-# Limit Upload Image Size WordPress Plugin
+# Upload Max Image Size WordPress Plugin
 
 <table>
 	<tr>
