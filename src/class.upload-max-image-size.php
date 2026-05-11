@@ -27,7 +27,7 @@ class UploadMaxImageSize {
         return self::custom_umis_limit_kb_callback($optionSizeKb);
     }
 
-    function upload_prefilter($file) {
+    public static function upload_prefilter($file) {
         // Skip files with .big before extension (e.g., my-file.big.jpg)
         $filename = $file['name'];
         if (preg_match('/\.big\.[^.]+$/i', $filename)) {
@@ -66,7 +66,7 @@ class UploadMaxImageSize {
       	load_plugin_textdomain('upload-max-image-size', false, dirname( plugin_basename(__FILE__) ) . '/languages/' );
     }
 
-    function register_options_page() {
+    public static function register_options_page() {
         add_options_page(
             // $page_title=
             'Change Image Upload Limit',
@@ -81,7 +81,7 @@ class UploadMaxImageSize {
         );
     }
 
-    function get_html_style() {
+    public static function get_html_style() {
 ?>
         <style>
             .upload-max-image-size table {
@@ -126,7 +126,7 @@ class UploadMaxImageSize {
     <?php
     }
 
-    function UploadMaxImageSize_option_page() {
+    public static function UploadMaxImageSize_option_page() {
         // content for the options page
     ?>
         <div class="upload-max-image-size">

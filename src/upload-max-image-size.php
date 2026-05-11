@@ -5,7 +5,7 @@
  * Author: Komarov Dmitrii  [d9k], Tiffany Elsten
  * Text Domain: upload-max-image-size
  * Domain Path: /languages
- * Version: 0.4
+ * Version: 0.5
  */
 
 include( plugin_dir_path( __FILE__ ) . 'class.upload-max-image-size.php');
